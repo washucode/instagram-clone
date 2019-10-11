@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from . import forms
 from .forms import RegisterForm
 from django.contrib.auth.decorators import login_required
-
+from django.contrib import messages
 
 
 def signup(request):
@@ -17,7 +17,10 @@ def signup(request):
             input_password = form.cleaned_data.get('password1')
             user = authenticate(username=username,password=input_password)
             login(request, user)
+            messages.success(request, f'Account created for {username}')
             return redirect('home')
+        
+
     else :
         form = RegisterForm()
     return render(request, 'auth/signup.html', {'form':form})
@@ -27,9 +30,7 @@ def home(request):
 
     return render(request, 'index.html')
 
-def login(request):
 
-    return render(request, 'login.html')
-    
+
 def logout_view(request):
     logout(request)

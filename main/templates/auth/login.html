@@ -12,7 +12,7 @@
         </div>
         <div class="col-md-8 signup text-center mt-5 ">
             <h1 class= 'logo'>My-Insta</h1>
-            <p style="font-weight: 600;" class = "signuph">Sign-up to see photos from your friends</p>
+            <p style="font-weight: 600;" class = "signuph">Sign-In to see photos from your friends</p>
             <form method="post" id = 'mysignup'>
                 {% csrf_token %}
                
@@ -30,8 +30,8 @@
                     {% endfor %}
                 </p>
              {% endfor %} 
-                <button type="submit" class="btn btn-primary btn-lg " >Sign up</button>
-                <p>Have an account?<a href="{% url 'login' %}">Sign In</a></p>
+                <button type="submit" class="btn btn-primary btn-lg " >Sign In</button>
+                <p>Need an  an account?<a href="{% url 'signup' %}">Sign Up</a></p>
             </form>
             
         </div>

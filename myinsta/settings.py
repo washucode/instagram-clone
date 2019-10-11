@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
-    'bootstrap3'
+    'bootstrap3',
     'crispy_forms'
 ]
 
@@ -144,6 +144,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # configuring the location for media
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-CRISPY_TEMPLATE_PACK = 'bootstrap4'   
+CRISPY_TEMPLATE_PACK = 'bootstrap4'  
+LOGIN_REDIRECT_URL = 'home' 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
