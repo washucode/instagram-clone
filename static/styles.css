@@ -1,12 +1,47 @@
 @import url('https://fonts.googleapis.com/css?family=Cabin+Sketch&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Carme&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Cookie&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap');
 
 body{
+
+   
+    font-family: 'Didact Gothic', sans-serif;
     
-    font-family: 'Carme', sans-serif;
     
 }
 
+.logo{
+    font-family: 'Cookie', cursive;
+    padding-top: 10%;
+    font-size: 70px;
+    letter-spacing: 3px;
+}
+
+.signup{
+    background-image: url('/static/bg1.jpg');
+    background-size: cover;
+    color : white;
+    margin-top: 5%;
+    box-shadow:inset 0 0 0 2000px rgba(51, 25, 40, 0.5);
+   
+  
+}
+#field{
+    color:black;
+    width:100%;
+}
+
+#mysignup{
+    margin-bottom: 5%;
+    font-size: 20px;
+  
+    width:100%;
+}
+#signuph{
+    margin-bottom: 5%;
+    
+}
 .mybigpic{
-    background-image: url( 'bg1.jpg')
+    margin-top: 5%;
 }

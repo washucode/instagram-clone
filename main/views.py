@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
-from forms import RegisterForm
+from django.contrib.auth.forms import UserCreationForm
+from . import forms
+from .forms import RegisterForm
 
 
 def signup(request):
@@ -15,6 +17,6 @@ def signup(request):
             login(request, user)
             return render(request, 'index.html')
     else :
-        form = UserCreationForm()
+        form = RegisterForm()
     return render(request, 'auth/signup.html', {'form':form})
             

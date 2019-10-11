@@ -5,8 +5,36 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-6 mybigpic">
-
+            <!-- <img src="/static/bg1.jpg" alt=""> -->
+        <div class="col-md-2 ">
+            
+        </div>
+        <div class="col-md-8 signup text-center mt-5 ">
+            <h1 class= 'logo'>My-Insta</h1>
+            <p style="font-weight: 600;" class = "signuph">Sign-up to see photos from your friends</p>
+            <form method="post" id = 'mysignup'>
+                {% csrf_token %}
+                {% for field in form%}
+                <p>
+                    <small>{{ field.label_tag }}</small> <br>
+                    <span id = 'field'>{{ field }}</span>
+                    <br>
+                
+                    <!-- {% if field.help_text %}
+                        <small style="color: grey">{{ field.help_text }}</small>
+                    {% endif %} -->
+                    {% for error in field.errors %}
+                        <p style="color: red">{{ error }}</p>
+                    {% endfor %}
+                </p>
+               {% endfor %}
+                <button type="submit" class="btn btn-primary btn-lg " >Sign up</button>
+                <p>Have an account?<a href="">Sign In</a></p>
+            </form>
+            
+        </div>
+        <div class="col-md-2 ">
+            
         </div>
     </div>
 </div>
