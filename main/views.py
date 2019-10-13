@@ -25,7 +25,7 @@ def signup(request):
         form = RegisterForm()
     return render(request, 'auth/signup.html', {'form':form})
 
-
+@login_required
 def home(request):
 
     return render(request, 'index.html')
