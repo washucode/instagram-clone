@@ -31,7 +31,9 @@ def home(request):
     return render(request, 'index.html')
 @login_required
 def profile(request):
-    return render(request,'profile.html')
+  current_user = request.user
+  images = Image.objects.filter(user_id = current_user.id).all()
+  return render(request,'profile.html',{"images":images})
     
 
 

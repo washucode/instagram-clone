@@ -58,3 +58,11 @@ body{
     border-width:1px;
     border-color:rgb(202, 196, 196);
 }
+
+.profile{
+    margin-top:5%;
+}
+
+.bold{
+    font-weight: 800;
+}
