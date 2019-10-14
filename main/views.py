@@ -35,6 +35,7 @@ def profile(request):
   current_user = request.user
   images = Image.objects.filter(uploader_profile_id = current_user.id).all()
   return render(request,'profile.html',{"images":images})
+
     
 
 

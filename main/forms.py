@@ -11,4 +11,9 @@ class RegisterForm(UserCreationForm):
     class Meta :
         model = User
         fields =('username','firstname','surname','email','password1','password2')
-       
+
+
+class ImageForm(forms.ModelForm):
+  class Meta:
+    model = Image
+    fields = ['image','name','caption','likes','date']       
