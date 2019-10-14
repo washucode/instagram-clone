@@ -36,6 +36,23 @@ class Image(models.Model):
     def __str__(self):
         return self.caption
 
+class Comments (models.Model):
+    '''
+    comment: comment that is posted on a post
+    author the commentor
+    imagecomment = the image commented on
+    date: date commented
+    '''
+
+    comment = models.CharField(max_length=150)
+    author = models.ForeignKey('Profile',related_name='commenter' , on_delete=models.CASCADE)
+    imagecomment = models.ForeignKey('Image', on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+
+    '''Method to filter database results'''
+    def __str__(self):
+        return self.author
+
 
 
 
