@@ -2,16 +2,25 @@
 
 {%block content%}
 {%include 'navbar.html'%}
-<div class="container">
+<div class="container profile">
     <div class="row">
         <div class="col-md-2">
             <img src="{{user.profile.profile_pic.url}}" alt="" class="img-circle" style = "width:100px;height: 100px; border:solid; border-color:rgb(223, 156, 169)">
         </div>
         <div class="col-md-8">
-            <h1 style ="font-weight: 800; font-size: 35px;">{{user.username}}</h1>
-            <br>
-         <a class = "btn btn-lg btn-block" style = "border: solid; border-color: rgb(202, 196, 196); border-width:1px;height:40px; font-size:20px;">Edit Profile</a>
+            <h1 style ="font-weight: 800; font-size: 30px;">{{user.username}}  &nbsp; <a class = "btn btn-lg" style = "border: solid; border-color: rgb(202, 196, 196); border-width:1px;height:38px; font-size:16px;font-weight: 800;">  Edit Profile </a> &nbsp; <a href=""><i class="fas fa-cog" style= 'color:black;'></i></a></h1>
         </div>
+    </div>
+    <div class="row ">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <h4> &nbsp;4  <span class = 'bold'>Posts</span> &nbsp; 108 <span class = 'bold'>Followers</span> &nbsp; 4 <span class = 'bold'>Following</span> </h4>  
+<span></span>
+        </div>
+        <div class="col-md-2"></div>
+        
+               
+     
     </div>
    
 </div>
@@ -24,23 +33,7 @@
     </div>
        
 </div>
-<br>
-<div class="container statistics">
-    <div class="row text-center">
-        <div class="col-md-4">
-            <h3>4</h3>
-            <h3>posts</h3>
-        </div>
-        <div class="col-md-4">
-            <h3>108</h3>
-            <h3>followers</h3>
-        </div>
-        <div class="col-md-4">
-            <h3>4</h3>
-            <h3>following</h3>
-        </div>
-    </div>
-</div>
+
 
 
 
