@@ -34,7 +34,7 @@ class Image(models.Model):
 
     '''Method to filter database results'''
     def __str__(self):
-        return self.image_caption
+        return self.caption
 
 
 
