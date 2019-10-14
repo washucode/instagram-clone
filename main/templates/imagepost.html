@@ -1,0 +1,21 @@
+<div class="modal fade" id="post" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <form action="{% url 'post' %}" method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                    <fieldset class="form-group">
+                    {{post|crispy}}
+                    </fieldset>
+                    <div class="form-group">
+                        <a href="{% url 'post' %}">
+                          <button class="btn btn-outline-info" type="submit">Post</button>
+                        </a>
+                    </div>
+                </form>            
+            </div>
+          </div>
+        </div>
+</div>
+    
+    
