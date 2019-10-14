@@ -50,3 +50,11 @@ body{
     font-weight: 900;
 }
 
+.statistics{
+    border-bottom: solid;
+    border-top:solid;
+    padding-top:2%;
+    padding-bottom:2%;
+    border-width:1px;
+    border-color:rgb(202, 196, 196);
+}
