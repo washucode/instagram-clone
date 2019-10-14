@@ -8,6 +8,7 @@ from django.views.generic import (
 from . import forms
 from .forms import RegisterForm , ImageForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 from .models import Image
 
@@ -32,24 +33,27 @@ def signup(request):
 
 @login_required
 def home(request):
-
+    
     return render(request, 'index.html')
+
+
 @login_required
 def profile(request):
   current_user = request.user
-  images = Image.objects.filter(uploader_profile_id = current_user.id).all()
-  return render(request,'profile.html',{"images":images})
+ 
+  images = Image.objects.filter(uploader_profile_id = current_user.id)
+  post =images.count()
+  print ('---',post)
+  return render(request,'profile.html',{"images":images, "post":post})
 
-# @login_required
-# def post(request):
-#   if request.method == 'POST':
-#     image_form = ImageForm(request.POST,request.FILES) 
-#     if image_form.is_valid():
-#       image_post = image_form.save(commit = False)
-#       image_post.user = request.user
-#       image_post.save()
-#   return redirect('home')
+class createimage(LoginRequiredMixin, CreateView):
     
+    model = Image
+    fields =['image','caption'] 
+
+    def form_valid(self,form):
+        form.instance.uploader_profile = self.request.user
+        return super().form_valid(form)
 
 
 

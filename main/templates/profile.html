@@ -14,7 +14,7 @@
     <div class="row ">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <h4> &nbsp;4  <span class = 'bold'>Posts</span> &nbsp; 108 <span class = 'bold'>Followers</span> &nbsp; 4 <span class = 'bold'>Following</span> </h4>  
+            <h4> &nbsp;{{post}} <span class = 'bold'>Posts</span> &nbsp; 108 <span class = 'bold'>Followers</span> &nbsp; 4 <span class = 'bold'>Following</span> </h4>  
 <span></span>
         </div>
         <div class="col-md-2"></div>
@@ -68,13 +68,17 @@
     {% if images %}
         <div class="card-columns">
         {% for image in images %}
-            <div class="card">
-            <img src="{{image.image.url}}" alt="" class="img-responsive card-img-top">
+        <div class="card mycard ">
+            <img src="{{image.image.url}}" alt="" class="img-responsive card-img-top profileimg" >
+            <div class="image-overlay">
+                <a href="" ><i class="fas fa-comments"></i> 5</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href=""><i class="fas fa-heart"></i>2</a>
             </div>
+        </div>
         {% endfor %}
         </div>    
      {% endif %}
-    {%include 'imagepost.html'%}
+   
 </div>
 
 

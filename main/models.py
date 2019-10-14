@@ -1,6 +1,7 @@
 from django.db import models
 #import user method for django
 from django.contrib.auth.models import User
+from django.urls import reverse
 import datetime
 
 
@@ -35,6 +36,9 @@ class Image(models.Model):
     '''Method to filter database results'''
     def __str__(self):
         return self.caption
+
+    def get_absolute_url(self):
+        return reverse('home')
 
 class Comments (models.Model):
     '''

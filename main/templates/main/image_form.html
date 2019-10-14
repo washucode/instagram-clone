@@ -1,11 +1,14 @@
-<div class="modal fade" id="post" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-body">
+{% extends 'base.html'%}
+
+{%block content%}
+{%include 'navbar.html'%}
+
+
+
               <form action="{% url 'post' %}" method="POST" enctype="multipart/form-data">
                   {% csrf_token %}
                     <fieldset class="form-group">
-                    {{image_form}}
+                    {{form}}
                     </fieldset>
                     <div class="form-group">
                         <a href="{% url 'post' %}">
@@ -13,9 +16,8 @@
                         </a>
                     </div>
                 </form>            
-            </div>
-          </div>
-        </div>
-</div>
+           
+
+{%endblock%}
     
     
