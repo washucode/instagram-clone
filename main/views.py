@@ -1,8 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
+from django.views.generic import (
+    CreateView,
+    UpdateView,
+)
 from . import forms
-from .forms import RegisterForm
+from .forms import RegisterForm , ImageForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Image
@@ -36,15 +40,15 @@ def profile(request):
   images = Image.objects.filter(uploader_profile_id = current_user.id).all()
   return render(request,'profile.html',{"images":images})
 
-@login_required
-def post(request):
-  if request.method == 'POST':
-    image_form = ImageForm(request.POST,request.FILES) 
-    if image_form.is_valid():
-      image_post = image_form.save(commit = False)
-      image_post.user = request.user
-      image_post.save()
-  return redirect('home')
+# @login_required
+# def post(request):
+#   if request.method == 'POST':
+#     image_form = ImageForm(request.POST,request.FILES) 
+#     if image_form.is_valid():
+#       image_post = image_form.save(commit = False)
+#       image_post.user = request.user
+#       image_post.save()
+#   return redirect('home')
     
 
 
