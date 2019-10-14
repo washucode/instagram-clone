@@ -5,6 +5,7 @@ from . import forms
 from .forms import RegisterForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from .models import Image
 
 
 def signup(request):
@@ -32,7 +33,7 @@ def home(request):
 @login_required
 def profile(request):
   current_user = request.user
-  images = Image.objects.filter(user_id = current_user.id).all()
+  images = Image.objects.filter(uploader_profile_id = current_user.id).all()
   return render(request,'profile.html',{"images":images})
     
 

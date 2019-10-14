@@ -21,10 +21,6 @@
                     <small>{{ field.label_tag }}</small> <br>
                     <span id = 'field'>{{ field }}</span>
                     <br>
-                
-                    <!-- {% if field.help_text %}
-                        <small style="color: grey">{{ field.help_text }}</small>
-                    {% endif %} -->
                     {% for error in field.errors %}
                         <p style="color: rgb(255, 208, 0)">{{ error }}</p>
                     {% endfor %}
