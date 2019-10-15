@@ -24,10 +24,12 @@
                 <div class="ml-3">
                 <form action="{% url 'like_post'%}" method = 'post'>
                   {% csrf_token%}
-                    <a href="" type = 'submit' id="likes" style = "font-size: 25px; color:black;" name = 'post_id' value ="{{image.id}}"><i class="far fa-heart"></i></a>
+                    <button href="" type = 'submit' id="likes" style = "font-size: 25px; color:black;" name = 'post_id' value ="{{image.id}}"><i class="far fa-heart"></i></button>
                 </form>
                   
                 </div>
+
+                
                 
                 <div class="ml-3">
                   <a href="#" style = "font-size: 25px;color:black;"><i class="fas fa-share-alt"></i></a>
@@ -39,6 +41,10 @@
               <div>
                 <p class="text-monospace ml-3" style = "font-size: 18px;"><span class = "uploader">{{image.uploader_profile.username}}</span>  {{image.caption}}</p>
               </div>
+              <div>
+                  <h3>{{image.total_likes}} Like</h3>
+              </div>
+
                <h3>Comments</h3>
               {%for comment in image.get_comments%}
                 <div>

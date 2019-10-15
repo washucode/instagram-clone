@@ -45,6 +45,9 @@ class Image(models.Model):
 
     def get_absolute_url(self):
         return reverse('home')
+
+    def total_likes(self):
+        return self.likes.count()
     
     @property
     def get_comments(self):

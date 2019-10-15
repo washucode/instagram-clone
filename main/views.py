@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import (
@@ -79,6 +79,7 @@ def like_post(request):
   post = get_object_or_404(Image,id=request.POST.get('post_id'))
   profile = Profile.objects.get(pk=request.user.id)
   post.likes.add(profile)
+ 
   return redirect(post.get_absolute_url())
 
 
