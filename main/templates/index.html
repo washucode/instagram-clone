@@ -22,7 +22,11 @@
             <div class="card-body">
               <div class="flex">
                 <div class="ml-3">
-                  <a href="#" id="likes" style = "font-size: 25px; color:black;"><i class="far fa-heart"></i></a>
+                <form action="{% url 'like_post%}" method = 'post'>
+                  {% csrf_token%}
+                    <a href="#" id="likes" style = "font-size: 25px; color:black;" value = '{{image.id}}'><i class="far fa-heart"></i></a>
+                </form>
+                  
                 </div>
                 
                 <div class="ml-3">
