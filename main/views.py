@@ -10,7 +10,7 @@ from .forms import RegisterForm , ImageForm,CommentForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
-from .models import Image
+from .models import Image,Profile,Comments
 
 
 def signup(request):
@@ -33,8 +33,12 @@ def signup(request):
 
 @login_required
 def home(request):
-    
-    return render(request, 'index.html')
+    current_user = request.user
+    comment_form = CommentForm()
+    images = Image.showall_images()
+   
+    print("..",comments)
+    return render(request, 'index.html', {'comment_form':comment_form,'images':images,'current_user':current_user})
 
 
 @login_required
@@ -57,15 +61,16 @@ class createimage(LoginRequiredMixin, CreateView):
 
 @login_required
 def comments(request,image_id):
-  Comment_form = CommentForm()
+  Comments_form = CommentForm()
   image = Image.objects.filter(pk = image_id).first()
   if request.method == 'POST':
-    Comment_form = CommentForm(request.POST)
+    Comments_form = CommentForm(request.POST)
     if Comments_form.is_valid():
-      comment = Comment_form.save(commit = False)
-      comment.user = request.user
-      comment.image = image
+      comment = Comments_form.save(commit = False)
+      profile = Profile.objects.get(pk=request.user.id)
+      comment.author = profile
+      comment.imagecomment = image
       comment.save() 
-  return redirect('index')
+  return redirect('home')
 
 

@@ -34,11 +34,23 @@ class Image(models.Model):
     date = models.DateTimeField(auto_now_add=True, null= True)
 
     '''Method to filter database results'''
+
+    @classmethod
+    def showall_images(cls):
+        images = cls.objects.all()
+        return images
+
     def __str__(self):
         return self.caption
 
     def get_absolute_url(self):
         return reverse('home')
+    
+    @property
+    def get_comments(self):
+        return self.image_comments.all()
+    
+    
 
 class Comments (models.Model):
     '''
@@ -50,12 +62,15 @@ class Comments (models.Model):
 
     comment = models.CharField(max_length=150)
     author = models.ForeignKey('Profile',related_name='commenter' , on_delete=models.CASCADE)
-    imagecomment = models.ForeignKey('Image', on_delete=models.CASCADE)
+    imagecomment = models.ForeignKey('Image', on_delete=models.CASCADE, related_name='image_comments')
     date = models.DateTimeField(auto_now_add=True)
 
     '''Method to filter database results'''
     def __str__(self):
         return self.author
+
+    
+
 
 
 

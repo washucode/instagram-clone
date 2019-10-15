@@ -1,8 +1,106 @@
 {% extends 'base.html'%}
-
+{% load crispy_forms_tags %}
 {%block content%}
 
 {%include 'navbar.html'%}
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+      {% if images %}
+        {% for image in images %}
+          <div class="row">
+            <div class="card pt-3 mt-4 otherposts">
+              <div class="card-header head">
+                <a href = "">
+                  <img src="{{image.uploader_profile.profile.profile_pic.url}}" class="img-circle" alt ="{{image.user.profile.profile_pic.url}}"width ='50'height='50' style = " border:solid; border-color:rgb(223, 156, 169)">
+                  <span class="text-monospace ml-3 pt-2" style = "color:black;font-size: 25px;"><small><strong>{{image.uploader_profile.username}}</strong></small></span> 
+                </a>
+              </div>
+              <div class="card-header">
+                <img src="{{image.image.url}}" alt="" class="card-img" style="width:800px;height:auto;">
+              </div>
+            <div class="card-body">
+              <div class="flex">
+                <div class="ml-3">
+                  <a href="#" id="likes" style = "font-size: 25px; color:black;"><i class="far fa-heart"></i></a>
+                </div>
+                
+                <div class="ml-3">
+                  <a href="#" style = "font-size: 25px;color:black;"><i class="fas fa-share-alt"></i></a>
+                </div>
+                <div class="ml-3">
+                  <a href="#" style = "font-size: 25px;color:black;"><i class="far fa-bookmark"></i></a>
+                </div>
+              </div>
+              <div>
+                <p class="text-monospace ml-3" style = "font-size: 18px;"><span class = "uploader">{{image.uploader_profile.username}}</span>  {{image.caption}}</p>
+              </div>
+               <h3>Comments</h3>
+              {%for comment in image.get_comments%}
+                <div>
+                   <p style = "font-size: 15px;"> <span class ="uploader">{{current_user.username}} </span> {{comment.comment}}</p>
+                </div>
+              {%endfor%}
+              <div>
+                <form action="{%url 'comments' image_id=image.id%}" method ='POST'>
+                        {% csrf_token%}
+                        {{comment_form|crispy}}
+                </form>
+              </div>
+                        
+            </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
 
+
+    <div class="col-md-3 " id="fix">
+      <div class="flex mt-3 pt-3 ml-3 pl-3">
+        <div>
+          <a href="{% url 'my_profile' %}"><img src="{{user.profile_pic.url}}" class="rounded-circle border" alt="{{uploader_profile.profile.name}}" width="80" height="80"></a>
+        </div>
+        <div>
+          <a href="{% url 'my_profile' %}"><h2 class="text-monospace ml-3 pt-2"><small><strong>{{user.username}}</strong></small></h2></a>
+        </div>
+      </div>
+      
+            
+    </div>
+    </div>
+  </div>
+  {% for image in images %}
+  <div class="modal fade" id="{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        
+        <div class="modal-header">
+            <a href="#"  data-dismiss="modal">cancel</a>
+          </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+
+<div class="modal fade" id="post" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <form action="{% url 'post' %}" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+                <fieldset class="form-group">
+                {{post}}
+                </fieldset>
+                <div class="form-group">
+                    <a href="{% url 'post' %}">
+                      <button class="btn btn-outline-info" type="submit">Post</button>
+                    </a>
+                </div>
+            </form>            
+        </div>
+      </div>
+    </div>
+  </div>
 
 {%endblock%}

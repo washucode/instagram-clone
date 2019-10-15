@@ -10,7 +10,15 @@ body{
     
     
 }
-
+.otherposts{
+    background-color: #fff;
+}
+.uploader{
+    font-weight:bolder;
+}
+.head,.flex{
+    display: flex;
+  }
 .logo{
     font-family: 'Pacifico', cursive;
     padding-top: 10%;
@@ -129,4 +137,8 @@ body{
     color:#fff;
     
     }
+
+.uploadform{
+    margin-top:3%;
+}
     

@@ -11,6 +11,6 @@ urlpatterns =[
     path('logout/', auth_views.LogoutView.as_view(), name = 'logout'),
     path('profile/', views.profile , name = 'my_profile'),
     path('image/new', views.createimage.as_view(), name = 'post'),
-    re_path(r'^comment/(?P<image_id>\d+)$',main_views.comments,name='comments'),
+    re_path(r'^comment/(?P<image_id>\d+)$',views.comments,name='comments'),
 
 ]
