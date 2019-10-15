@@ -54,6 +54,10 @@ class Image(models.Model):
         return self.image_comments.all()
     
     
+    def delete_post(self):
+        return self.delete()
+    
+    
 
 class Comments (models.Model):
     '''

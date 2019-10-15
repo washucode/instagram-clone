@@ -83,3 +83,11 @@ def like_post(request):
   return redirect(post.get_absolute_url())
 
 
+def delete(request, image_id):
+  post = Image.objects.get(pk=image_id)
+  post.delete_post()
+  return redirect('my_profile')
+
+
+
+
