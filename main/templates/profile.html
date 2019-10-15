@@ -6,15 +6,19 @@
     <div class="row">
         <div class="col-md-2">
             <img src="{{user.profile.profile_pic.url}}" alt="" class="img-circle" style = "width:100px;height: 100px; border:solid; border-color:rgb(223, 156, 169)">
+            
         </div>
         <div class="col-md-8">
-            <h1 style ="font-weight: 800; font-size: 30px;">{{user.username}}  &nbsp; <a class = "btn btn-lg" style = "border: solid; border-color: rgb(202, 196, 196); border-width:1px;height:38px; font-size:16px;font-weight: 800;">  Edit Profile </a> &nbsp; <a href=""><i class="fas fa-cog" style= 'color:black;'></i></a></h1>
+            <h1 style ="font-weight: 800; font-size: 22px;">{{user.username}}  &nbsp; <a class = "btn btn-lg" style = "border: solid; border-color: rgb(202, 196, 196); border-width:1px;height:38px; font-size:16px;font-weight: 800;">  Edit Profile </a> &nbsp; <a href=""><i class="fas fa-cog" style= 'color:black;'></i></a></h1>
+           
         </div>
+
     </div>
     <div class="row ">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <h4> &nbsp;{{post}} <span class = 'bold'>Posts</span> &nbsp; 108 <span class = 'bold'>Followers</span> &nbsp; 4 <span class = 'bold'>Following</span> </h4>  
+            <h4> &nbsp;{{post}} <span class = 'bold'>Posts</span> &nbsp; 1<span class = 'bold'>Followers</span> &nbsp; 1 <span class = 'bold'>Following</span> </h4> 
+            <a class = "btn btn-lg"  href = "{%url 'logout'%}"style = "border: solid; border-color: rgb(202, 196, 196); border-width:1px;height:38px; font-size:16px;font-weight: 800;">LogOut</a>  
 <span></span>
         </div>
         <div class="col-md-2"></div>
@@ -28,8 +32,8 @@
 <br>
 <div class="container">
     <div class = 'bio'>
-        <h3 class = "profilename"  style= " font-weight: 900;">Esther Wacuka</h3>
-        <h3>Just pics not my absolute reality</h3>
+        
+        <h3>{{user.bio}}</h3>
     </div>
        
 </div>

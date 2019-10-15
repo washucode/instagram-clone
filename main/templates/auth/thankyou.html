@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{%block content%}
+<div class="container">
+    <div class="row text-center">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <h1 class= 'logo' style= "color:black;">My-Insta</h1>
+            <h2 class = " mt-5"> You are Logged Out</h2>
+            <a  class = "btn btn-lg mt-5" href="{% url 'login'%}"style = "border: solid; border-color: rgb(202, 196, 196); border-width:1px;height:38px; font-size:16px;font-weight: 800;">Login Again</a>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+
+
+{%endblock%}
