@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 from .models import Image,Profile,Comments
+from django.http import HttpResponse
 
 
 def signup(request):
@@ -37,7 +38,7 @@ def home(request):
     comment_form = CommentForm()
     images = Image.showall_images()
    
-    print("..",comments)
+   
     return render(request, 'index.html', {'comment_form':comment_form,'images':images,'current_user':current_user})
 
 
@@ -47,7 +48,7 @@ def profile(request):
  
   images = Image.objects.filter(uploader_profile_id = current_user.id)
   post =images.count()
-  print ('---',post)
+  
   return render(request,'profile.html',{"images":images, "post":post})
 
 class createimage(LoginRequiredMixin, CreateView):
@@ -72,5 +73,12 @@ def comments(request,image_id):
       comment.imagecomment = image
       comment.save() 
   return redirect('home')
+
+
+def like_post(request):
+  post = get_object_or_404(Image,id=request.POST.get('post_id'))
+  profile = Profile.objects.get(pk=request.user.id)
+  post.likes.add(profile)
+  return redirect(post.get_absolute_url())
 
 
