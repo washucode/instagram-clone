@@ -71,8 +71,8 @@
         <div class="card mycard ">
             <img src="{{image.image.url}}" alt="" class="img-responsive card-img-top profileimg" >
             <div class="image-overlay">
-                <a href="" ><i class="fas fa-comments"></i> 5</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href=""><i class="fas fa-heart"></i>2</a>
+                <a href="" ><i class="fas fa-comments"></i> {{image.get_comments|length}}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href=""> <i class="fas fa-heart"></i>{{image.total_likes}}</a>
             </div>
         </div>
         {% endfor %}
