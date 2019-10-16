@@ -14,5 +14,6 @@ urlpatterns =[
     re_path(r'^comment/(?P<image_id>\d+)$',views.comments,name='comments'),
     re_path(r'^like/$',views.like_post,name='like_post'),
     re_path(r'^delete/(?P<image_id>\d+)$',views.delete,name='delete'),
+    path('update/',views.update_profile,name='update_profile'),
 
 ]

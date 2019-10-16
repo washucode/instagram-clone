@@ -6,7 +6,7 @@ from django.views.generic import (
     UpdateView,
 )
 from . import forms
-from .forms import RegisterForm , ImageForm,CommentForm
+from .forms import RegisterForm , ImageForm,CommentForm,UpdateUser,UpdateProfile
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
@@ -45,11 +45,12 @@ def home(request):
 @login_required
 def profile(request):
   current_user = request.user
- 
+  profile = Profile.objects.get(pk=request.user.id)
+  bio = profile.bio
   images = Image.objects.filter(uploader_profile_id = current_user.id)
   post =images.count()
   
-  return render(request,'profile.html',{"images":images, "post":post})
+  return render(request,'profile.html',{"images":images, "post":post,'bio':bio})
 
 class createimage(LoginRequiredMixin, CreateView):
     
@@ -91,3 +92,21 @@ def delete(request, image_id):
 
 
 
+@login_required
+def update_profile(request):
+  if request.method == 'POST':
+    user_form = UpdateUser(request.POST,instance=request.user)
+    profile_form = UpdateProfile(request.POST,request.FILES,instance=request.user.profile)
+    if user_form.is_valid() and profile_form.is_valid():
+      user_form.save()
+      profile_form.save()
+      messages.success(request,'Your Profile account has been updated successfully')
+      return redirect('my_profile')
+  else:
+    user_form = UpdateUser(instance=request.user)
+    profile_form = UpdateProfile(instance=request.user.profile) 
+  forms = {
+    'user_form':user_form,
+    'profile_form':profile_form
+  }
+  return render(request,'update_profile.html',forms)

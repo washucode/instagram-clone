@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Image,Comments
+from .models import Image,Comments,Profile
 
 
 class RegisterForm(UserCreationForm):
@@ -26,4 +26,16 @@ class CommentForm(forms.ModelForm):
     self.fields['comment'].widget.attrs['placeholder']='Add a comment...'
   class Meta:
     model = Comments
-    fields = ('comment',)    
+    fields = ('comment',)  
+
+class UpdateProfile(forms.ModelForm):
+  class Meta:
+    model = Profile
+    fields = ['profile_pic','bio']  
+
+    
+class UpdateUser(forms.ModelForm):
+  email = forms.EmailField()
+  class Meta:
+    model = User
+    fields = ['username','email']

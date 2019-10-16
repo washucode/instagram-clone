@@ -1,0 +1,30 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-2">
+        
+        </div>
+        <div class="col-md-6">
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                <label for="" class="border-bottom mb-4 text-center">Edit profile</label>
+                {{user_form|crispy}}
+                {{profile_form|crispy}}
+                </fieldset>
+                <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Update</button>
+                </div>
+            </form>  
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+
+
+{% endblock %}

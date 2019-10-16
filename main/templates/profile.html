@@ -9,7 +9,7 @@
             
         </div>
         <div class="col-md-8">
-            <h1 style ="font-weight: 800; font-size: 22px;">{{user.username}}  &nbsp; <a class = "btn btn-lg" style = "border: solid; border-color: rgb(202, 196, 196); border-width:1px;height:38px; font-size:16px;font-weight: 800;">  Edit Profile </a> &nbsp; <a href=""><i class="fas fa-cog" style= 'color:black;'></i></a></h1>
+            <h1 style ="font-weight: 800; font-size: 22px;">{{user.username}}  &nbsp; <a class = "btn btn-lg" style = "border: solid; border-color: rgb(202, 196, 196); border-width:1px;height:38px; font-size:16px;font-weight: 800;" href = "{%url 'update_profile'%}">  Edit Profile </a> &nbsp; <a href=""><i class="fas fa-cog" style= 'color:black;'></i></a></h1>
            
         </div>
 
@@ -32,8 +32,7 @@
 <br>
 <div class="container">
     <div class = 'bio'>
-        
-        <h3>{{user.bio}}</h3>
+        <h3>{{bio}}</h3>
     </div>
        
 </div>
