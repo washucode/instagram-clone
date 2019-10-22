@@ -48,7 +48,7 @@
                <h3>Comments</h3>
               {%for comment in image.get_comments%}
                 <div>
-                   <p style = "font-size: 15px;"> <span class ="uploader">{{current_user.username}} </span> {{comment.comment}}</p>
+                   <p style = "font-size: 15px;"> <span class ="uploader">{{comment.author.user.username}} </span> {{comment.comment}}</p>
                 </div>
               {%endfor%}
               <div>

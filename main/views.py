@@ -37,15 +37,15 @@ def home(request):
     current_user = request.user
     comment_form = CommentForm()
     images = Image.showall_images()
+    comment = Comments.objects.all()
    
-   
-    return render(request, 'index.html', {'comment_form':comment_form,'images':images,'current_user':current_user})
+    return render(request, 'index.html', {'comment_form':comment_form,'images':images,'current_user':current_user,'comment':comment})
 
 
 @login_required
 def profile(request):
   current_user = request.user
-  profile = Profile.objects.filter(pk=request.user.id)
+  profile = Profile.objects.get(user=request.user)
   
   images = Image.objects.filter(uploader_profile_id = current_user.id)
   post =images.count()
@@ -69,9 +69,9 @@ def comments(request,image_id):
     Comments_form = CommentForm(request.POST)
     if Comments_form.is_valid():
       comment = Comments_form.save(commit = False)
-      profile = Profile.objects.filter(pk=request.user.id)
-  
+      profile = Profile.objects.get(user=request.user)
       comment.author = profile
+      
       comment.imagecomment = image
       comment.save() 
   return redirect('home')
@@ -79,9 +79,10 @@ def comments(request,image_id):
 
 def like_post(request):
   post = get_object_or_404(Image,id=request.POST.get('post_id'))
-  profile = Profile.objects.filter(pk=request.user.id).first()
-  
+  profile = Profile.objects.get(user=request.user)
+ 
   post.likes.add(profile)
+
  
   return redirect(post.get_absolute_url())
 
