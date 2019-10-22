@@ -45,12 +45,12 @@ def home(request):
 @login_required
 def profile(request):
   current_user = request.user
-  profile = Profile.objects.get(pk=request.user.id)
-  bio = profile.bio
+  profile = Profile.objects.filter(pk=request.user.id)
+  
   images = Image.objects.filter(uploader_profile_id = current_user.id)
   post =images.count()
   
-  return render(request,'profile.html',{"images":images, "post":post,'bio':bio})
+  return render(request,'profile.html',{"images":images, "post":post,'profile':profile})
 
 class createimage(LoginRequiredMixin, CreateView):
     
