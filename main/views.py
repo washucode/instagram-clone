@@ -69,7 +69,8 @@ def comments(request,image_id):
     Comments_form = CommentForm(request.POST)
     if Comments_form.is_valid():
       comment = Comments_form.save(commit = False)
-      profile = Profile.objects.get(pk=request.user.id)
+      profile = Profile.objects.filter(pk=request.user.id)
+  
       comment.author = profile
       comment.imagecomment = image
       comment.save() 
@@ -78,7 +79,8 @@ def comments(request,image_id):
 
 def like_post(request):
   post = get_object_or_404(Image,id=request.POST.get('post_id'))
-  profile = Profile.objects.get(pk=request.user.id)
+  profile = Profile.objects.filter(pk=request.user.id)
+  
   post.likes.add(profile)
  
   return redirect(post.get_absolute_url())
