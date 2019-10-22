@@ -79,7 +79,7 @@ def comments(request,image_id):
 
 def like_post(request):
   post = get_object_or_404(Image,id=request.POST.get('post_id'))
-  profile = Profile.objects.filter(pk=request.user.id)
+  profile = Profile.objects.filter(pk=request.user.id).first()
   
   post.likes.add(profile)
  
