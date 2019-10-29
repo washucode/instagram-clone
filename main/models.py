@@ -30,7 +30,7 @@ class Image(models.Model):
     caption : more info about the image
     image: the image itself
     '''
-    image = models.ImageField(upload_to ='pictsagram/')
+    image = models.ImageField(upload_to ='pictsagram/',null='False')
     caption = models.CharField(max_length=700)
     uploader_profile = models.ForeignKey(User, on_delete=models.CASCADE,null='True', blank=True)
     likes = models.ManyToManyField(Profile, default=False, blank=True, related_name='likes')
